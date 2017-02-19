@@ -1,0 +1,14 @@
+version: '2'
+services:
+ wildfly:
+  build: .
+  container_name: wildfly
+  ports:
+   - "8080:8080"
+  networks:
+   - blog
+networks:
+ blog:
+  external:
+   name: blog 
+ 
