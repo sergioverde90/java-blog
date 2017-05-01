@@ -13,13 +13,4 @@ export class EntryService {
        return this.http.get("app/entry-component/mock/mock-entries.json")
        .map(response => response.json() as Entry[])
     }
-
-    /**
-     * return all entries available
-     * 
-     * @return promise {Promise<Entry[]>}
-     */
-    getEntries() : Promise<Entry[]> {
-        return Promise.resolve([new Entry(1, "## Hellow Angular & Markdown")]);
-    }
 }

@@ -1,3 +1,6 @@
-<markdown-to-html *ngFor="let entry of entries">
- {{entry.content}}
-</markdown-to-html>
+<div class="row" *ngFor="let entry of entries">
+    <div class="col-sm-4" style="background-color:lavender;">
+        {{entry.content}}
+        <div [innerHtml]="entry.content"></div>
+    </div>
+</div>
