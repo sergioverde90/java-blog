@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import * as marked from 'marked'; // from 'https://github.com/chjj/marked'
+declare var hljs: any;
 
 @Injectable()
 export class MarkdownParserService {
@@ -10,7 +11,10 @@ export class MarkdownParserService {
         this.md = marked;
         this.md.setOptions({
             gfm     : true, 
-            breaks  : true
+            breaks  : true,
+            highlight(code){
+                return hljs.highlightAuto(code).value;;
+            }
         });
     }
 

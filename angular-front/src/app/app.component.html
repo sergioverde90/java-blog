@@ -1,9 +1,6 @@
 <div class="row" *ngFor="let entry of entries">
-      <div class="col-sm-4" style="background-color:lavender;">
-          <pre>
-              <code #code class="java">
-                  {{entry.content}} 
-              </code>
-          </pre>
+    <div class="col-sm-4" style="background-color:lavender;">
+        {{entry.content}}
+        <div [innerHtml]="entry.content"></div>
     </div>
 </div>

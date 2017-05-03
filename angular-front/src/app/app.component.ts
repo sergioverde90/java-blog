@@ -33,10 +33,6 @@ export class AppComponent implements OnInit {
 
     }
 
-    ngAfterViewInit() {
-      hljs.highlightBlock(/** this.codeElement[0].nativeElement **/);
-    }
-
     toMarkdown() {
       for(let entry in this.entries){
         let parsed = this.parser.convert(this.entries[entry].content);
