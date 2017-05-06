@@ -29,10 +29,6 @@ export class AppComponent implements OnInit {
       });
     }
 
-    highlight() {
-
-    }
-
     toMarkdown() {
       for(let entry in this.entries){
         let parsed = this.parser.convert(this.entries[entry].content);

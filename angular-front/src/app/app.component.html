@@ -1,6 +1,12 @@
-<div class="row" *ngFor="let entry of entries">
-    <div class="col-sm-4" style="background-color:lavender;">
-        {{entry.content}}
-        <div [innerHtml]="entry.content"></div>
-    </div>
+<!-- 
+    BOOTSTRAP:
+    - Always over 12 grids.
+    - Always .container > .row
+    - col-md-offset-* nos permite compensar columnas, es como un colspan en html
+
+-->
+<div class="container">
+    <section class="row" *ngFor="let entry of entries">
+        <article class="col-xs-12" [innerHtml]="entry.content"></article>
+    </section>  
 </div>
