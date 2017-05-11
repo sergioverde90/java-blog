@@ -25,14 +25,16 @@ export class AppComponent implements OnInit {
       this.entryService.fromJSON().
       subscribe(entries => {
         this.entries = entries;
-        this.toMarkdown();
+        for(let entry in this.entries){
+          this.entries[entry].content = this.toMarkdown( this.entries[entry].content);
+        }
       });
     }
 
-    toMarkdown() {
-      for(let entry in this.entries){
-        let parsed = this.parser.convert(this.entries[entry].content);
-        this.entries[entry].content = parsed;
-      }
+    /**
+     * helper function to parse raw data to markdown
+     */
+    toMarkdown(data : string) : string {
+      return this.parser.convert(data);
     }
 }
