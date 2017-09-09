@@ -1,6 +1,9 @@
 export class Entry {
     constructor(
         public id : Number,
-        public content : string
+        public date : Date,
+        public title : string,
+        public content : string,
+        public resume : string
     ){}
 }

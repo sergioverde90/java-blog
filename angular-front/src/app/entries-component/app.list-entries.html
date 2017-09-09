@@ -1,0 +1,13 @@
+<div class="container">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="blob-post" *ngFor="let entry of entries">
+                <h2><a routerLink="/entry/{{entry.id}}" routerLinkActive="active" [innerHtml]="entry.title">Crisis Center</a></h2>
+                <!-- <h2 class="blog-post-title" [innerHtml]="entry.title"></h2> -->
+                <p class="text-muted" [innerHtml]="entry.date">January 1, 2014 by</p>
+                <p [innerHtml]="entry.resume"></p>
+                <hr>
+            </div>
+        </div>
+    </div>
+</div>
