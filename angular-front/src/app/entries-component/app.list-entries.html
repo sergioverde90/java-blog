@@ -1,13 +1,45 @@
 <div class="container">
     <div class="row">
-        <div class="col-sm-12">
+        <div class="col-sm-9">
             <div class="blob-post" *ngFor="let entry of entries">
-                <h2><a routerLink="/entry/{{entry.id}}" routerLinkActive="active" [innerHtml]="entry.title">Crisis Center</a></h2>
-                <!-- <h2 class="blog-post-title" [innerHtml]="entry.title"></h2> -->
-                <p class="text-muted" [innerHtml]="entry.date">January 1, 2014 by</p>
+                <!-- <h2><a routerLink="/entry/{{entry.id}}" routerLinkActive="active" [innerHtml]="entry.title">Crisis Center</a></h2> -->
+                <h2 class="blog-post-title" [innerHtml]="entry.title"></h2>
+                <p class="text-muted"><em>{{entry.date}}</em> by <a>{{entry.author}}</a></p>
                 <p [innerHtml]="entry.resume"></p>
+                <a routerLink="/entry/{{entry.id}}" class="btn btn-primary">Leer más</a>
                 <hr>
             </div>
         </div>
+        <!-- This should be another component -->
+        <div class="col-sm-3">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Panel title</h3>
+                </div>
+                <div class="panel-body"> Panel content</div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <!-- This shloud be another component -->
+        <nav aria-label="Page navigation">
+            <ul class="pagination">
+                <li>
+                <a href="#" aria-label="Previous">
+                    <span aria-hidden="true">&laquo;</span>
+                </a>
+                </li>
+                <li><a href="#">1</a></li>
+                <li><a href="#">2</a></li>
+                <li><a href="#">3</a></li>
+                <li><a href="#">4</a></li>
+                <li><a href="#">5</a></li>
+                <li>
+                <a href="#" aria-label="Next">
+                    <span aria-hidden="true">&raquo;</span>
+                </a>
+                </li>
+            </ul>
+        </nav>
     </div>
 </div>

@@ -8,7 +8,7 @@ declare var hljs: any;
 @Component({
     selector: 'app-list-entries',
     templateUrl : './app.list-entries.html',
-    //styleUrls: ['./app.component.css']
+    styleUrls: ['./app.list-entries.css']
 })
 export class EntriesComponent implements OnInit {
 
