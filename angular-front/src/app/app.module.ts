@@ -25,7 +25,7 @@ const appRoutes: Routes = [
     BrowserModule,
     FormsModule,
     HttpModule,
-    RouterModule.forRoot(appRoutes /*, { enableTracing: true }*/) // uncomment for debug purpose only
+    RouterModule.forRoot(appRoutes, { useHash: true } /*, { enableTracing: true }*/) // uncomment for debug purpose only
   ],
   providers: [EntryService, MarkdownParserService],
   bootstrap: [AppComponent]
