@@ -10,18 +10,14 @@ export class EntryService {
     constructor(private http: Http) {}
 
     fromJSON() : Observable<Entry[]> {
-        return this.http.get('/app/entry-component/mock/mock-entries.json')
+        return this.http.get('/query/entries')
             .map(response => response.json());
     }
 
     getById(id : Number) : Observable<Entry> {
-        return this.http.get('/app/entry-component/mock/mock-entries.json')
+        return this.http.get('/query/entries/' + id)
         .map(response => { 
-            const entries : Entry[] = response.json();
-            const entry : Entry = entries.find((el) => {
-                return el.id == id;
-            });
-            return entry;
+            return response.json();
         });
     }
 }
