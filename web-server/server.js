@@ -1,8 +1,8 @@
-var express = require('express');
-var app = express();
-var fs = require('fs');
+const express = require('express');
+const app = express();
+const fs = require('fs');
 const pg = require('pg')
-var format = require('pg-format')
+const format = require('pg-format')
 
 const PORT = 8080;
 
@@ -15,16 +15,12 @@ var config = {
   }
 
 var pool = new pg.Pool(config)
-  
 
 // allow load static resources
 app.use(express.static('dist'));
 // disable http cache -> 
 app.disable('etag');
 
-app.get("/", function(request, response){
-    response.send("hello world");
-})
 app.get("/query/entries", function(request, response){
     console.log("queriying entries")
     pool.connect((err, client, done) => {
@@ -38,14 +34,6 @@ app.get("/query/entries", function(request, response){
         });
     });
 });
-
-// app.get("/query/entries/:id", function(request, response){
-//     var id = request.params.id;
-//     var entries = _readEntries();
-//     var found = entries.find(el => el.id == id);
-//     if(!found) response.status("404").send("not found :(");
-//     response.status("200").send(found);
-// });
 
 app.listen(PORT);
 console.log(`server listening by port ${PORT}`)
