@@ -27,7 +27,6 @@ export class EntriesComponent implements OnInit {
         this.entryService.fromJSON().
         subscribe(entries => {
         entries.forEach((entry) => {
-            entry.content = this.toMarkdown(entry.content);
             entry.resume  = this.toMarkdown(entry.resume);
             entry.title   = this.toMarkdown(entry.title);
         });

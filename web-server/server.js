@@ -14,7 +14,7 @@ app.disable('etag');
 
 app.get("/query/entries", cors(CORST_OPTIONS), function(request, response){
     console.log("querying all entries")
-    var sql = 'SELECT * from posts order by d_date DESC';
+    var sql = 'SELECT id, author, title, d_date, resume from posts order by d_date DESC';
     CONNECTION_HOLDER
         .query(sql, "error occuren when try to obtain all posts")
         .then(res =>  response.send(res.rows));
