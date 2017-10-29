@@ -30,4 +30,4 @@ app.get("/query/entries/:id", cors(CORST_OPTIONS), function(request, response){
 });
 
 app.listen(PORT);
-console.log(`server listening by port ${PORT}`)
+console.log(`server listening on port ${PORT}`)
