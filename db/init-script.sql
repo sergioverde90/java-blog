@@ -12,7 +12,7 @@ create SEQUENCE postsSequence increment by 1 start with 1;
 
 -- strings should be escaped -> https://stackoverflow.com/questions/935/string-literals-and-escape-characters-in-postgresql
 -- use: E'my String with \'
-insert into posts (id, author, title, d_date, resume, content) -
+insert into posts (id, author, title, d_date, resume, content)
 values(nextval('postsSequence'), 'sergioverde90@gmail.com', 'How to  build an +Angular 2 proyect', '08-09-2017', 'Ejemplo de cómo construir una aplicación +Angular 2 desde cero!', E'# Angular 2 + Angular CLI \n## Instalación de nodejs \nPrimero debemos tener instalado el gestor de paquetes npm y para ello necesitamos instalar nodejs \n> [nodejs](https://nodejs.org/es/download/) \n \n## Instalar angular CLI \n> npm install -g @angular/cli \n \nDejar instalando las dependencias. Probar sobre localhost:4200 \n \n## Instalar dependencia markdown \n> npm install ng2-markdown-to-html --save \n [markdown-to-html](https://www.npmjs.com/package/ng2-markdown-to-html) \n \n## Importar el módulo de markdown \n \n> import &#123; MarkdownToHtmlModule } from "ng2-markdown-to-html";  \n');
 
 insert into posts (id, author, title, d_date, resume, content) 
