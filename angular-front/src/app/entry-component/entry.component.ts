@@ -22,7 +22,7 @@ export class EntryComponent implements OnInit {
 
     ngOnInit() : void {
         this.route.params.forEach((param) => {
-            const entryId : Number = param["id"];
+            const entryId : Number = param['id'];
             this.entryService.getById(entryId)
             .subscribe(entry => {
                 entry.content = this.toMarkdown(entry.content);

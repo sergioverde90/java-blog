@@ -4,7 +4,8 @@ RUN apk update \
     && mkdir /webapp \
     && npm install express \
     && npm install pg \
-    && npm install pg-format
+    && npm install pg-format \
+    && npm install cors
 
 COPY ./server.js /webapp
 WORKDIR /webapp
