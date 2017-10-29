@@ -8,6 +8,7 @@ RUN apk update \
     && npm install cors
 
 COPY ./server.js /webapp
+COPY ./modules/ /webapp/modules
 WORKDIR /webapp
 CMD ["node", "server.js"]
 EXPOSE 8080
