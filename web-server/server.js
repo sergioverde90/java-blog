@@ -29,28 +29,37 @@ app.disable('etag');
 
 app.get("/query/entries", cors(corsOptions), function(request, response){
     console.log("queriying entries")
-    pool.connect((err, client, done) => {
-        if (err) throw err;
-        console.log("connected to database");
-        var query = format('SELECT * from posts');
-        client.query(query, (err, result) => {
-            if(err) throw err;
-            response.send(result.rows);
+    pool.connect().then(client => {
+        var sql = format('SELECT * from posts order by d_date DESC');
+        client.query(sql).then(res => {
+            client.release();
+            response.send(res.rows);
+        })
+        .catch(err => {
+            try { client.release(); } catch(err) { console.error("error when client was to be released")}
+            console.error("error occuren when try to obtain all posts = ", err);
         });
-        client.release();
+    }, err => {
+        console.error("error occuren when try to connect = ", err);
+        // TODO: Handle common message
     });
 });
 
 app.get("/query/entries/:id", cors(corsOptions), function(request, response){
     const id = request.params.id;
-    pool.connect((err, client, done) => {
-        if (err) throw err;
-        var query = format(`SELECT * from posts where id = ${id}`);
-        client.query(query, (err, result) => {
-            if(err) throw err;
-            response.send(result.rows[0]);
-        });
-        client.release();
+    pool.connect().then(client => {
+        let query = format(`SELECT * from posts where id = ${id}`);
+        client.query(query).then(resp => {
+            client.release();
+            response.send(resp.rows[0]);
+        })
+        .catch(err => {
+            try { client.release(); } catch(err) { console.error("error when client was to be released")}
+            console.log(`error when try to obtain the post with id ${id} = `, err);
+        })
+    }, err => {
+        console.error("error occuren when try to connect = ", err);
+        // TODO: Handle common message
     });
 });
 
