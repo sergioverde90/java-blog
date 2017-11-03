@@ -6,11 +6,11 @@ import 'rxjs/add/operator/map';
 
 @Injectable()
 export class EntryService {
-    HOST = 'http://server:8080'; //'http://alb-backend-server-868001910.eu-west-1.elb.amazonaws.com:8080';
+    HOST = 'http://localhost:8080';
     constructor(private http: Http) {}
 
-    fromJSON() : Observable<Entry[]> {
-        return this.http.get(`${this.HOST}/query/entries`)
+    fromJSON(actPage : Number) : Observable<Entry[]> {
+        return this.http.get(`${this.HOST}/query/entries?page=${actPage}`)
             .map(response => {
                 return response.json();
             });
@@ -18,6 +18,13 @@ export class EntryService {
 
     getById(id : Number) : Observable<Entry> {
         return this.http.get(`${this.HOST}/query/entries/${id}`)
+        .map(response => { 
+            return response.json();
+        });
+    }
+
+    totalPosts() :  Observable<any> {
+        return this.http.get(`${this.HOST}/query/total-entries`)
         .map(response => { 
             return response.json();
         });

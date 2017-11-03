@@ -1,14 +1,16 @@
-FROM alpine:latest
-RUN apk update \ 
-    && apk add nodejs-npm \
-    && mkdir /webapp \
-    && npm install express \
-    && npm install pg \
-    && npm install pg-format \
-    && npm install cors
+FROM node:alpine
+ENV PORT 8080
+RUN mkdir /webapp
 
+# copy required data
+COPY ./package.json /webapp
+WORKDIR /webapp
+RUN npm install
+    
 COPY ./server.js /webapp
 COPY ./modules/ /webapp/modules
-WORKDIR /webapp
+
 CMD ["node", "server.js"]
+# expose
+VOLUME /webapp/posts
 EXPOSE 8080

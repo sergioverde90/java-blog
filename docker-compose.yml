@@ -4,17 +4,5 @@ services:
   build: ./web-server
   ports:
    - '8080:8080'
-  depends_on:
-   - db
- front:
-  build: ./front
-  ports:
-   - '80:80'
-  depends_on:
-   - server
- db:
-  build: ./db
-  environment:
-   - POSTGRES_PASSWORD=postgres
-  ports:
-   - '5432:5432'
+  volumes:
+   - './web-server/posts:/webapp/posts'

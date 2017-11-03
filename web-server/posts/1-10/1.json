@@ -1,0 +1,8 @@
+{
+    "id" : 1,
+    "author" : "@Sergioverde1",
+    "title" : "How to  build an +Angular 2 proyect",
+    "date" : "09-09-2017",
+    "resume" : "Ejemplo de cómo construir una aplicación +Angular 2 desde cero!",
+    "content" : "# Angular 2 + Angular CLI \n## Instalación de nodejs \nPrimero debemos tener instalado el gestor de paquetes npm y para ello necesitamos instalar nodejs \n> [nodejs](https://nodejs.org/es/download/) \n \n## Instalar angular CLI \n> npm install -g @angular/cli \n \nDejar instalando las dependencias. Probar sobre localhost:4200 \n \n## Instalar dependencia markdown \n> npm install ng2-markdown-to-html --save \n [markdown-to-html](https://www.npmjs.com/package/ng2-markdown-to-html) \n \n## Importar el módulo de markdown \n \n> import &#123; MarkdownToHtmlModule } from 'ng2-markdown-to-html';  \n"
+}

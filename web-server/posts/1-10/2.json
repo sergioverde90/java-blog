@@ -1,0 +1,8 @@
+{   
+    "id" : 2,
+    "author" : "@Sergioverde1",
+    "date" : "09-09-2017",
+    "title" : "CDI (Context and Dependency Injection) with @Transactional",
+    "resume" : "Ejemplo de uso de la anotación @Transactional que provee la espcificación JTA",
+    "content" : "# Example with Docker, CDI and @Transactional annotation \nComplete example with a CDI and transactional resource. \n \nYou can test this example as follow: \n* Build war file \n```bash \nmvn clean install \n``` \n* Build the image \n```bash \ndocker build -t wildfly-cdi . \n``` \n* Run a container based in this image \n```bash \ndocker run -d --name cdi -p 8080:8080 wildfly-cdi \n``` \n* test the example \n```bash \ncurl -i http://localhost:8080/cdi-transactional/resources/cdi/tx \n```"
+}

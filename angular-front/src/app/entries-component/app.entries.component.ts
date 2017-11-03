@@ -1,6 +1,7 @@
 import { Component, ViewChildren, ElementRef, OnInit } from '@angular/core';
 import { EntryService } from 'app/entry-component/EntryService';
 import { MarkdownParserService } from 'app/MarkdownParserService';
+import { Router, ActivatedRoute, Params } from '@angular/router';
 import { Entry } from 'app/entry-component/Entry';
 
 declare var hljs: any;
@@ -16,21 +17,25 @@ export class EntriesComponent implements OnInit {
      * Component fields
      */
     entries : Entry[];
+    actPage : Number;
 
     constructor(
         private entryService : EntryService,
         private parser       : MarkdownParserService,
-        private elementRef: ElementRef)
-    {}
+        private route: ActivatedRoute,
+        private elementRef: ElementRef) {}
 
     ngOnInit(): void {
-        this.entryService.fromJSON().
-        subscribe(entries => {
-        entries.forEach((entry) => {
-            entry.resume  = this.toMarkdown(entry.resume);
-            entry.title   = this.toMarkdown(entry.title);
+        this.route.params.forEach((param) => {
+            this.actPage = param['page'] || 0;
         });
-        this.entries = entries;
+        this.entryService.fromJSON(this.actPage).
+        subscribe(entries => {
+            entries.forEach((entry) => {
+                entry.resume  = this.toMarkdown(entry.resume);
+                entry.title   = this.toMarkdown(entry.title);
+            });
+            this.entries = entries;
         });
     }
 

@@ -27,7 +27,7 @@ export class EntryComponent implements OnInit {
             .subscribe(entry => {
                 entry.content = this.toMarkdown(entry.content);
                 this.entry = entry;
-            })
+            });
         });
     }
 

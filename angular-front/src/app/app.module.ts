@@ -8,24 +8,27 @@ import { EntryService } from 'app/entry-component/EntryService';
 import { MarkdownParserService } from 'app/MarkdownParserService';
 import { EntryComponent } from 'app/entry-component/entry.component';
 import { EntriesComponent } from 'app/entries-component/app.entries.component';
+import { EntryPagination } from 'app/entry-pagination/entry.pagination';
 
 const appRoutes: Routes = [
   { path: 'entry/:id', component: EntryComponent },
-  { path: 'entries', component: EntriesComponent },
-  { path: '', redirectTo: '/entries', pathMatch: 'full'},
+  { path: 'entries/:page', component: EntriesComponent },
+  { path: '', redirectTo: '/entries/0', pathMatch: 'full'},
+  { path: 'entries', redirectTo: '/entries/0', pathMatch: 'full'}
 ];
 
 @NgModule({
   declarations: [
     AppComponent,
     EntryComponent,
-    EntriesComponent
+    EntriesComponent,
+    EntryPagination
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpModule,
-    RouterModule.forRoot(appRoutes, { useHash: true } /*, { enableTracing: true }*/) // uncomment for debug purpose only
+    RouterModule.forRoot(appRoutes, /*, { enableTracing: true }*/) // uncomment for debug purpose only
   ],
   providers: [EntryService, MarkdownParserService],
   bootstrap: [AppComponent]
